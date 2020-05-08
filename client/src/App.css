@@ -265,3 +265,16 @@ pre {
 .filter-button:hover {
   background-color: #0e101c;
 }
+
+.button-toggle {
+  margin: 10px 20px;
+  align-self: flex-end;
+}
+
+.button-toggle:hover {
+  background-color: #0e101c;
+}
+
+.let-there-be-light{
+  background-color: #fff;
+}

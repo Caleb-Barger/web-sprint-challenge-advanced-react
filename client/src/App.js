@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { Button } from 'reactstrap'
 
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
+
+import { useDarkMode } from './hooks/useDarkMode'
 
 import "./App.css";
 
 function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
+  const [darkMode, setDarkMode] = useDarkMode()
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -23,8 +27,13 @@ function App() {
 
   return (
     <div>
+      <Button
+        className="button-toggle"
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        outline >Toggle Theme</Button>
       <Router>
-        <nav className="container">
+        <nav className={darkMode ? "container dark-mode" : "container"}>
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
