@@ -30,13 +30,29 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+  you build statefull class components by writing a class component with a some state that uses some lifecycle methods such as didUpdate, or didMount
+
 2. Describe the different phases of the component lifecycle.
+
+  the first phase is the mounting phase which sets up the inital state for that component, then didUpdate checks to see if state has been updated, finally when we are all done with the component, the unMount phase is called and the component is deystroyed
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+  lifecyle methods are special functions that we get to use whenever we set up a class based component, they allow 
+  for extreme flexability when it comes to controlling the state of that particular component and its children, 
+  such as the ability to compare previous slices of state to current state.
+
 4. Define stateful logic.
 
+  stateful logic is any logic dealing with the flow of application state. It is the behavior that we observe, 
+  when dealing with multipule hooks!
+
 5. Describe how to test a React component with React Testing Library.
+
+  In any test you need to go through three steps arrange, act, and assert
+  you arrange the the test by setting up the enviornment for where the tests are going to take place ie render(<Component />)
+  From here you will act my locating elements within that component and doing things like entering info into them
+  finally you will assert with something like expect(x to be equal to x)
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -89,9 +105,9 @@ Your finished project must include all of the following requirements:
 
 Display a list of the plants from the server. This should be done in the class component `PlantList`.
 
-- [ ] In the `PlantList` class component, fetch data from the server you now have running - the data can be fetched from `http://localhost:3333/plants`
-- [ ] Set the data to a state property called `this.state.plants`
-- [ ] The render function is already built and styled. Once the data is on the state, you will see the list of plants, and you will have the functionality to add a plant to the cart
+- [x] In the `PlantList` class component, fetch data from the server you now have running - the data can be fetched from `http://localhost:3333/plants`
+- [x] Set the data to a state property called `this.state.plants`
+- [x] The render function is already built and styled. Once the data is on the state, you will see the list of plants, and you will have the functionality to add a plant to the cart
 
 #### Shopping Cart
 
@@ -101,14 +117,14 @@ Nothing needs to be done here. You _will_ have to navigate to the cart page in y
 
 The form is working, but it is currently controlled by local stateful logic. We want to control this form with a custom hook.
 
-- [ ] Build a custom hook called `useForm`, and use it in your CheckoutForm component to control the form's stateful logic
+- [x] Build a custom hook called `useForm`, and use it in your CheckoutForm component to control the form's stateful logic
 
 _Note: You built a useForm hook in the guided project this week. You will probably need to use that as a guide to complete this step._
 
 #### Testing the Checkout Form
 
-- [ ] Build out the tests listed in `CheckoutForm.test.js`. You will need to make sure they are testing what the test title implies they are testing
-- [ ] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
+- [x] Build out the tests listed in `CheckoutForm.test.js`. You will need to make sure they are testing what the test title implies they are testing
+- [x] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
 
 <hr/>
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
