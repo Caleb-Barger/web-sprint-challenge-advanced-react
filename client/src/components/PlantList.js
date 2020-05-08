@@ -8,6 +8,9 @@ export default class PlantList extends Component {
     super()
     this.state = {
       plants: [],
+      filteredPlants: [],
+      filterText: "",
+      reset: false,
       url: ""
     }
   }
@@ -19,18 +22,39 @@ export default class PlantList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.url !== prevState.url) {
+    if (this.state.url !== prevState.url || this.state.reset === true) {
       axios
         .get(this.state.url)
         .then(res => {
           // console.log(res.data)
-          this.setState({ plants: res.data.plantsData })
+          this.setState({ plants: res.data.plantsData, reset: false })
+
         })
         .catch(err => {
           console.log("Bad request using og url")
           this.setState({ url: prevState.url })
         })
     }
+  }
+
+
+  updateSearchValue = e => {
+    this.setState({ filterText: e.target.value })
+  }
+
+  filterPlants = e => {
+    const term = this.state.filterText
+    const newPlants = this.state.plants.filter(plant => {
+      if (plant.name === term.trim()) {
+        return plant
+      }
+    })
+    this.setState({ plants: newPlants })
+    // console.log(this.state.plants)
+  }
+
+  resetFilteredPlants = e => {
+    this.setState({ reset: true })
   }
 
   // when the component mounts:
@@ -43,9 +67,16 @@ export default class PlantList extends Component {
       <main className="plant-list">
         <div className="filter-bar">
           <InputGroup>
-            <Input placeholder="Snake Plant..." />
+            <Input
+              placeholder="Snake Plant..."
+              onChange={this.updateSearchValue}
+              value={this.state.filterText}
+            />
             <InputGroupAddon addonType="append">
-              <Button outline className="filter-button">Filter</Button>
+              <Button outline className="filter-button" onClick={this.filterPlants}>Filter</Button>
+            </InputGroupAddon>
+            <InputGroupAddon addonType="append">
+              <Button outline className="filter-button" onClick={this.resetFilteredPlants}>Reset</Button>
             </InputGroupAddon>
           </InputGroup>
         </div>
