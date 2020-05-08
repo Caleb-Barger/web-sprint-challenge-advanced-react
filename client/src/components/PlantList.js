@@ -3,6 +3,34 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
+  constructor() {
+    super()
+    this.state = {
+      plants: [],
+      url: ""
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      url: "http://localhost:3333/plants"
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.url !== prevState.url) {
+      axios
+        .get(this.state.url)
+        .then(res => {
+          // console.log(res.data)
+          this.setState({ plants: res.data.plantsData })
+        })
+        .catch(err => {
+          console.log("Bad request using og url")
+          this.setState({ url: prevState.url })
+        })
+    }
+  }
 
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
