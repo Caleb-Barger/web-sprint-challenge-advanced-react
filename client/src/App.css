@@ -251,3 +251,17 @@ pre {
   color: #0e101c;
   border-bottom: 2px solid !important;
 }
+
+.filter-bar {
+  width: 80%;
+  display: flex;
+}
+
+.filter-button {
+  align-self: flex-start;
+  margin: 0;
+}
+
+.filter-button:hover {
+  background-color: #0e101c;
+}

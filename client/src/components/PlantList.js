@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap'
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -40,6 +41,14 @@ export default class PlantList extends Component {
   render() {
     return (
       <main className="plant-list">
+        <div className="filter-bar">
+          <InputGroup>
+            <Input placeholder="Snake Plant..." />
+            <InputGroupAddon addonType="append">
+              <Button outline className="filter-button">Filter</Button>
+            </InputGroupAddon>
+          </InputGroup>
+        </div>
         {this.state?.plants?.map((plant) => (
           <div className="plant-card" key={plant.id}>
             <img className="plant-image" src={plant.img} alt={plant.name} />
